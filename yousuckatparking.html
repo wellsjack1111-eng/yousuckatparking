@@ -1,0 +1,127 @@
+from pathlib import Path
+
+html = r'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You Suck at Parking™</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f1e8;color:#182018}
+header{background:#182018;color:#fff;padding:16px 20px;position:sticky;top:0;z-index:5}
+nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-weight:900}
+nav a{color:#fff;text-decoration:none;font-weight:800;margin-left:14px}
+.hero{background:#d9dfc8;text-align:center;padding:65px 20px 55px;border-bottom:7px solid #182018}
+.badge{display:inline-block;background:#f4c542;border:3px solid #182018;padding:7px 12px;font-weight:900;box-shadow:4px 4px #182018}
+h1{font-size:clamp(3rem,11vw,7rem);line-height:.85;letter-spacing:-5px;margin:22px auto;max-width:900px}
+.hero p{max-width:680px;margin:0 auto 28px;font-size:1.15rem;font-weight:650}
+.buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.btn{border:3px solid #182018;background:#f4c542;color:#182018;padding:14px 20px;border-radius:10px;font-weight:900;text-decoration:none;cursor:pointer;box-shadow:4px 4px #182018;font-size:1rem}
+.btn.dark{background:#182018;color:#fff}
+main{max-width:1000px;margin:auto;padding:45px 20px}section{margin-bottom:65px}
+h2{font-size:2.2rem}.sub{color:#596559;font-weight:650}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#fff;border:3px solid #182018;border-radius:14px;padding:20px;box-shadow:5px 5px #182018}.card h3{margin-top:0}
+.num{display:inline-flex;width:34px;height:34px;border:2px solid #182018;border-radius:50%;align-items:center;justify-content:center;background:#f4c542;font-weight:900}
+.warning{background:#fff2bd;border:3px dashed #182018;border-radius:14px;padding:18px;margin-top:20px;font-weight:650}
+.quiz{background:#182018;color:#fff;border-radius:18px;padding:28px;box-shadow:7px 7px #f4c542}
+.progress{height:10px;background:#405040;border-radius:20px;overflow:hidden;margin:15px 0 25px}.bar{height:100%;width:0;background:#f4c542}
+.answers{display:grid;gap:10px;margin-top:20px}.answer{border:3px solid #fff;border-radius:10px;background:#fff;color:#182018;padding:14px;text-align:left;font-weight:800;font-size:1rem;cursor:pointer}.answer.correct{background:#b9e6b5}.answer.wrong{background:#ffb5ad}
+#feedback{min-height:28px;margin-top:18px;font-weight:900}.next{display:none;margin-top:15px}
+#result{display:none;text-align:center}.score{font-size:4.5rem;font-weight:950;color:#f4c542}
+footer{background:#182018;color:#fff;text-align:center;padding:35px 20px}footer p{opacity:.8}
+@media(max-width:650px){header{position:static}nav{flex-direction:column}nav a{margin:0 6px}h1{letter-spacing:-3px}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">🚗 YOU SUCK AT PARKING™</div><div><a href="#guide">Guide</a><a href="#quiz">Quiz</a></div></nav></header>
+
+<div class="hero">
+<div class="badge">OFFICIAL PARKING RECOVERY PROGRAM™</div>
+<h1>YOU SUCK<br>AT PARKING.</h1>
+<p>Don't worry. We're here to help. Read the guide, take the test, and discover whether you are qualified to park between two lines.</p>
+<div class="buttons"><a class="btn" href="#guide">📖 LEARN HOW TO PARK</a><a class="btn dark" href="#quiz">📝 TAKE THE QUIZ</a></div>
+</div>
+
+<main>
+<section id="guide">
+<h2>📖 The Complete Parking Guide</h2>
+<p class="sub">Read this while safely parked. Obviously.</p>
+<div class="grid">
+<div class="card"><div class="num">1</div><h3>Find a Good Space</h3><p>Choose a legal space that is large enough for your vehicle. Check signs, lines, pedestrians, and nearby vehicles.</p></div>
+<div class="card"><div class="num">2</div><h3>Slow Down</h3><p>Parking is not a race. Slow down so you have time to steer and check your surroundings.</p></div>
+<div class="card"><div class="num">3</div><h3>Line Yourself Up</h3><p>Give yourself enough room to make the turn. Use your mirrors and look at the space instead of guessing.</p></div>
+<div class="card"><div class="num">4</div><h3>Turn In</h3><p>Steer smoothly into the space. Avoid giant last-second turns that put you in the next space.</p></div>
+<div class="card"><div class="num">5</div><h3>Straighten Out</h3><p>Straighten the wheels and center your vehicle. Your goal is to be between the lines.</p></div>
+<div class="card"><div class="num">6</div><h3>Check Your Work</h3><p>Look at your position. Make sure you aren't blocking another space and obey all signs and markings.</p></div>
+</div>
+<div class="grid" style="margin-top:20px">
+<div class="card"><h3>↩️ Parallel Parking</h3><p>Pull alongside the vehicle in front of the space with a safe gap. Check around you, reverse slowly, steer into the space, then straighten out.</p></div>
+<div class="card"><h3>🔄 Backing Into a Space</h3><p>Check the area carefully, signal when appropriate, reverse slowly, and keep checking your surroundings. Cameras help but don't replace looking.</p></div>
+<div class="card"><h3>⚠️ Common Mistakes</h3><p>Parking over the line, rushing, ignoring signs, failing to check around the vehicle, and relying entirely on a backup camera.</p></div>
+</div>
+<div class="warning">🚨 <strong>IMPORTANT:</strong> Never read or use this site while driving. Park first, then browse. Follow local traffic laws and signs.</div>
+</section>
+
+<section id="quiz">
+<h2>📝 The Official Parking Test</h2>
+<p class="sub">10 questions. One mission: prove you can park.</p>
+<div class="quiz">
+<div id="quizContent">
+<div id="qn"></div><div class="progress"><div class="bar" id="bar"></div></div>
+<h2 id="question"></h2><div class="answers" id="answers"></div><div id="feedback"></div>
+<button class="btn next" id="next">NEXT QUESTION →</button>
+</div>
+<div id="result"><div>FINAL PARKING SCORE</div><div class="score" id="score"></div><h2 id="resultTitle"></h2><p id="resultText"></p><button class="btn" onclick="startQuiz()">🔄 RETAKE THE TEST</button></div>
+</div>
+</section>
+</main>
+
+<footer><strong>YOU SUCK AT PARKING™</strong><p>The Official Parking Recovery Program</p><p>Made for entertainment. Please park responsibly.</p></footer>
+
+<script>
+const questions=[
+["Your vehicle is over the parking line. What should you do?",["Leave it.","Fix your position if safe.","Park in two spaces.","Blame the car next to you."],1],
+["What should you do before backing up?",["Check your surroundings carefully.","Trust the camera completely.","Floor it.","Ask someone to guess."],0],
+["What is the goal when parking between two lines?",["Touch both lines.","Be reasonably centered.","Use two spaces.","Park diagonally."],1],
+["A space is too small for your vehicle. What should you do?",["Try anyway.","Use two spaces.","Choose another suitable space.","Wait for it to grow."],2],
+["Why should you slow down while parking?",["To have time to steer and check.","Because parking takes forever.","To confuse pedestrians.","Because cars like it."],0],
+["After pulling into a space, what should you do?",["Straighten and check your position.","Immediately leave.","Turn harder.","Start honking."],0],
+["What matters most when parallel parking?",["Checking around you and moving slowly.","Going fast.","Only looking forward.","Huge steering turns."],0],
+["A sign says a space is reserved. What should you do?",["Park there anyway.","Ignore it.","Follow the sign and find another space.","Ask the sign."],2],
+["Your backup camera is clear, but you haven't checked around the car. What now?",["Back up.","Check around the vehicle.","Trust the camera.","Turn the camera off."],1],
+["You finish parking and are badly positioned. What should you do?",["Leave it.","Fix it if safe.","Use another space too.","Declare victory."],1]
+];
+let current=0,score=0,answered=false;
+function startQuiz(){current=0;score=0;document.getElementById("quizContent").style.display="block";document.getElementById("result").style.display="none";load()}
+function load(){
+answered=false;let x=questions[current];document.getElementById("qn").textContent=`QUESTION ${current+1} OF ${questions.length}`;
+document.getElementById("question").textContent=x[0];document.getElementById("feedback").textContent="";
+document.getElementById("next").style.display="none";document.getElementById("bar").style.width=(current/questions.length*100)+"%";
+let box=document.getElementById("answers");box.innerHTML="";
+x[1].forEach((a,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>choose(i,b);box.appendChild(b)})
+}
+function choose(i,b){
+if(answered)return;answered=true;let x=questions[current],all=document.querySelectorAll(".answer");
+all.forEach((z,j)=>{z.disabled=true;if(j===x[2])z.classList.add("correct")});
+if(i===x[2]){score++;b.classList.add("correct");document.getElementById("feedback").textContent="✅ CORRECT. There may be hope for you."}
+else{b.classList.add("wrong");document.getElementById("feedback").textContent="❌ Incorrect. Please review the guide."}
+document.getElementById("next").style.display="inline-block";document.getElementById("bar").style.width=((current+1)/questions.length*100)+"%"
+}
+document.getElementById("next").onclick=()=>{current++;current<questions.length?load():showResult()}
+function showResult(){
+document.getElementById("quizContent").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent=score+"/10";
+let t,r;if(score===10){t="🏆 PARKING LEGEND";r="Perfect score. Either you're incredible or you've studied suspiciously hard."}
+else if(score>=8){t="🟢 PARKING PRIVILEGES GRANTED";r="You understand the fundamentals. Keep your vehicle between the lines."}
+else if(score>=5){t="🟡 PARKING UNDER REVIEW";r="You're getting there. Your parking career is not doomed yet."}
+else if(score>=3){t="🟠 SEVERE PARKING CONDITION";r="Please review the guide before attempting to impress your passengers."}
+else{t="🔴 PARKING EMERGENCY";r="Please reread the guide before your next parking attempt."}
+document.getElementById("resultTitle").textContent=t;document.getElementById("resultText").textContent=r
+}
+startQuiz();
+</script>
+</body>
+</html>'''
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created {path}")
